@@ -36,5 +36,23 @@ class TestAccount {
 		assertEquals(toTest.getAvailableBalance().getValore(),0);
 		assertEquals(toTest.getTotalBalance().getValore(),333300);
 	}
+	
+	/////////////////////////////GETTERS/////////////////////////////////
+	
+	@Test
+	public void getAvailableBalanceTest() {
+		assertEquals(toTest.getAvailableBalance().getValore(),222200);
+	}
+	
+	@Test
+	public void getTotalBalanceTest() {
+		assertEquals(toTest.getTotalBalance().getValore(),333300);
+	}
+	
+	@Test
+	public void getAccountNumberTest() {
+		assertEquals(toTest.getAccountNumber(),0000);
+	}
 
+	/////////////////////////////////////////////////////////////////////
 }
