@@ -19,28 +19,27 @@ class TestEuro {
 	}
 	
 	@Test
-	public void getValore1Test() {
+	public void getValoreTest() {
 		assertEquals(amount1.getValore(),100);
-	}
-	
-	@Test
-	public void getValore2Test() {
 		assertEquals(amount2.getValore(),250);
-	}
-	
-	@Test
-	public void sumTest() {
-		assertEquals((amount1.somma(amount2)).getValore(),350);
-	}
-	
-	@Test
-	public void subTest() {
-		assertEquals((amount2.sottrai(amount1)).getValore(),150);
 	}
 	
 	@Test
 	public void equalsTest() {
 		assertTrue(amount1.ugualeA(new Euro(1)));
+		assertTrue(amount2.ugualeA(new Euro(2,50)));
+	}
+	
+	@Test
+	public void sumTest() {
+		amount1.somma(amount2);
+		assertTrue(amount1.ugualeA(new Euro(3,50)));
+	}
+	
+	@Test
+	public void subTest() {
+		amount2.sottrai(amount1);
+		assertTrue(amount2.ugualeA(new Euro(1,50)));
 	}
 	
 	@Test
@@ -51,6 +50,8 @@ class TestEuro {
 	@Test
 	public void printTest() {
 		assertEquals(amount1.stampa(),"1.0 euro");
+		assertEquals(amount2.stampa(),"2.5 euro");
+
 	}
 
 }
