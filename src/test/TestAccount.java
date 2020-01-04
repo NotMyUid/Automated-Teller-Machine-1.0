@@ -10,13 +10,10 @@ import code.Euro;
 
 class TestAccount {
 	Account toTest;
-	Euro avl,tot;
 
 	@BeforeEach
 	public void initializedTest() {
-		avl = new Euro (2222);
-		tot = new Euro (3333);
-		toTest = new Account(0000,1111,avl,tot);
+		toTest = new Account(0000,1111,new Euro (1000),new Euro (1200));
 	}
 	
 	@Test
@@ -26,27 +23,27 @@ class TestAccount {
 	
 	@Test
 	public void creditTest() {
-		toTest.credit(avl);
-		assertEquals(toTest.getTotalBalance().getValore(),555500);
+		toTest.credit(new Euro (1000));
+		assertTrue(toTest.getTotalBalance().ugualeA(new Euro(2200)));
 	}
 	
 	@Test
 	public void debitTest() {
-		toTest.debit(avl);
-		assertEquals(toTest.getAvailableBalance().getValore(),0);
-		assertEquals(toTest.getTotalBalance().getValore(),333300);
+		toTest.debit(new Euro (1000));
+		assertTrue(toTest.getAvailableBalance().ugualeA(new Euro(0)));
+		assertTrue(toTest.getTotalBalance().ugualeA(new Euro(200)));
 	}
 	
 	/////////////////////////////GETTERS/////////////////////////////////
 	
 	@Test
 	public void getAvailableBalanceTest() {
-		assertEquals(toTest.getAvailableBalance().getValore(),222200);
+		assertTrue(toTest.getAvailableBalance().ugualeA(new Euro(1000)));
 	}
 	
 	@Test
 	public void getTotalBalanceTest() {
-		assertEquals(toTest.getTotalBalance().getValore(),333300);
+		assertTrue(toTest.getTotalBalance().ugualeA(new Euro(1200)));
 	}
 	
 	@Test
